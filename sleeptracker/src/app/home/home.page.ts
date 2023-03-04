@@ -23,4 +23,8 @@ export class HomePage {
 		return SleepService.AllSleepData;
 	}
 
+	async sleep() {
+		console.log("bedge");
+	}
+
 }
