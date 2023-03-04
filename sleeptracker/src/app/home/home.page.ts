@@ -10,8 +10,10 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-	
-  constructor(public sleepService:SleepService) {
+	private static sleeptime:Date;
+	private static waketime:Date;
+
+	constructor(public sleepService:SleepService) {
 	}
 
 	ngOnInit() {
@@ -25,9 +27,14 @@ export class HomePage {
 
 	async sleep() {
 		console.log("bedge :3");
+		HomePage.sleeptime = new Date(); // slept at current time+date
+		console.log(HomePage.sleeptime);
 	}
-	async awake() {
+	async awaken() {
 		console.log("wokege O_O");
+		HomePage.waketime = new Date(); // woke up at current time+date
+		let sleepData = new OvernightSleepData(HomePage.sleeptime, HomePage.waketime); // new sleepData object
+		this.sleepService.logOvernightData(sleepData); // log the sleepData
 	}
 
 
