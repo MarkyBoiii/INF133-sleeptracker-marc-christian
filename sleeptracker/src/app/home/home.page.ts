@@ -24,7 +24,11 @@ export class HomePage {
 	}
 
 	async sleep() {
-		console.log("bedge");
+		console.log("bedge :3");
 	}
+	async awake() {
+		console.log("wokege O_O");
+	}
+
 
 }
