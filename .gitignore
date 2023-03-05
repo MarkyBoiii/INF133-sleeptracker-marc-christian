@@ -3,6 +3,7 @@
 
 node_modules
 .angular/cache
+.angular/cache/15.1.6
 
 *~
 *.sw[mnpcod]
