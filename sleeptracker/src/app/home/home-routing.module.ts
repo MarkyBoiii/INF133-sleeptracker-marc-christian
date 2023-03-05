@@ -14,4 +14,9 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class HomePageRoutingModule {
+  constructor(private router: Router) {}
+
+  navToSleepTimes() {
+    this.router.navigateByUrl('../sleeptimes')
+  }
 }

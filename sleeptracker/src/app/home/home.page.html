@@ -14,18 +14,15 @@
   </ion-header>
 
   <ion-button (click)="show()">show sleep data</ion-button>
-  <ion-datetime [(ngModel)]="sleepy" [preferWheel]="true" (ionChange)="sleepDate(sleepy)">
-    <span slot="title">What time did you go to sleep?</span>
-  </ion-datetime>
-  <ion-datetime [(ngModel)]="wakey" [preferWheel]="true" (ionChange)="wakeDate(wakey)">
-    <span slot="title">What time did you wake up?</span>
-  </ion-datetime>
-  <ion-button (click)="done()">Done</ion-button>
 
-  <ion-fab slot="fixed" horizontal="center" vertical="bottom">
-    <ion-fab-button (click)="presentActionSheet()">
+  <ion-fab slot="fixed" horizontal="start" vertical="bottom">
+    <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-button routerLink="/sleeptimes">Add Sleep Times</ion-button>
+      <ion-button routerLink="/sleepiness">Add Sleepiness</ion-button>
+    </ion-fab-list>
   </ion-fab>
 
 </ion-content>

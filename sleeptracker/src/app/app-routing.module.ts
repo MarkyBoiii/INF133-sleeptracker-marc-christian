@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'sleeptimes',
+    loadChildren: () => import('./sleeptimes/sleeptimes.module').then( m => m.SleeptimesPageModule)
+  },
+  {
+    path: 'sleepiness',
+    loadChildren: () => import('./sleepiness/sleepiness.module').then( m => m.SleepinessPageModule)
+  },
 ];
 
 @NgModule({

@@ -5,19 +5,15 @@ import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import { ActionSheetController } from '@ionic/angular';
 
+import { RouterModule, Routes, Router} from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-	private static sleeptime:Date;
-	private static waketime:Date;
-
-	public sleepy:any;
-	public wakey:any;
-
-	constructor(public sleepService:SleepService, private actionSheetCtrl: ActionSheetController) {
+	constructor(public sleepService:SleepService) {
 	}
 
 	ngOnInit() {
@@ -30,49 +26,6 @@ export class HomePage {
 	}
 
 	async show() {
-		console.log(this.allSleepData);
+		console.log(this.allSleepData); // show the data
 	}
-	sleepDate(value:Date) {
-		HomePage.sleeptime = new Date(value); // set sleep time
-	}
-	wakeDate(value:Date) {
-		HomePage.waketime = new Date(value); // set wake time
-	}
-	done() {
-		let sleepData = new OvernightSleepData(HomePage.sleeptime, HomePage.waketime);
-		this.sleepService.logOvernightData(sleepData); // create sleep data and log to sleepService
-	}
-	
-	async presentActionSheet() {
-		const actionSheet = await this.actionSheetCtrl.create({
-		  header: 'Example header',
-		  subHeader: 'Example subheader',
-		  buttons: [
-			{
-			  text: 'Delete',
-			  role: 'destructive',
-			  data: {
-				action: 'delete',
-			  },
-			},
-			{
-			  text: 'Share',
-			  data: {
-				action: 'share',
-			  },
-			},
-			{
-			  text: 'Cancel',
-			  role: 'cancel',
-			  data: {
-				action: 'cancel',
-			  },
-			},
-		  ],
-		});
-	
-		await actionSheet.present();
-	  }
-
-
 }
