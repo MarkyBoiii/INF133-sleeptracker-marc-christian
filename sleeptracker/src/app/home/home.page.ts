@@ -13,6 +13,9 @@ export class HomePage {
 	private static sleeptime:Date;
 	private static waketime:Date;
 
+	public sleepy:any;
+	public wakey:any;
+
 	constructor(public sleepService:SleepService) {
 	}
 
@@ -25,17 +28,20 @@ export class HomePage {
 		return SleepService.AllSleepData;
 	}
 
-	async sleep() {
-		console.log("bedge :3");
-		HomePage.sleeptime = new Date(); // slept at current time+date
-		console.log(HomePage.sleeptime);
+	async show() {
+		console.log(this.allSleepData);
 	}
-	async awaken() {
-		console.log("wokege O_O");
-		HomePage.waketime = new Date(); // woke up at current time+date
-		let sleepData = new OvernightSleepData(HomePage.sleeptime, HomePage.waketime); // new sleepData object
-		this.sleepService.logOvernightData(sleepData); // log the sleepData
+	sleepDate(value:Date) {
+		HomePage.sleeptime = new Date(value); // set sleep time
 	}
+	wakeDate(value:Date) {
+		HomePage.waketime = new Date(value); // set wake time
+	}
+	done() {
+		let sleepData = new OvernightSleepData(HomePage.sleeptime, HomePage.waketime);
+		this.sleepService.logOvernightData(sleepData); // create sleep data and log to sleepService
+	}
+	
 
 
 }
