@@ -13,11 +13,23 @@ export class SleepService {
 	public static AllOvernightData:OvernightSleepData[] = [];
 	public static AllSleepinessData:StanfordSleepinessData[] = [];
 
-	//Injected storage
-	constructor(private storage:Storage) {
+	//Injected storage from @ionic/storage-angular
+	constructor(private overnightDataStorage:Storage, private sleepinessDataStorage:Storage) {
+		//Create the three different storages/databases.
+		//this.sleepDataStorage.create();
+		this.overnightDataStorage.create();
+		this.sleepinessDataStorage.create();
+
 		if(SleepService.LoadDefaultData) {
 			this.addDefaultData();
 		SleepService.LoadDefaultData = false;
+
+		
+
+		//Everytime the service is started, load both storages.
+		//this.loadOvernightDataStorage();
+		//this.loadSleepinessDataStorage();
+
 	}
 	}
 
@@ -28,12 +40,65 @@ export class SleepService {
 	}
 
 	public logOvernightData(sleepData:OvernightSleepData) {
+
+		//this.overnightDataStorage.set(SleepService.AllOvernightData.length.toString(), sleepData);
+
 		SleepService.AllSleepData.push(sleepData);
 		SleepService.AllOvernightData.push(sleepData);
+
+		//Adds the sleepData to the local storage of overnightDataStorage. Keys: the length of AllOvernightData (as we add to it, we get a different key)
+		this.overnightDataStorage.set(sleepData.id, sleepData);
 	}
 
 	public logSleepinessData(sleepData:StanfordSleepinessData) {
+		
+		//this.sleepinessDataStorage.set(SleepService.AllSleepinessData.length.toString(), sleepData);
+		
 		SleepService.AllSleepData.push(sleepData);
 		SleepService.AllSleepinessData.push(sleepData);
+
+		//Adds the sleepData to the local storage of sleepinessDataStorage. Keys: the length of AllSleepinessData (as we add to it, we get a different key)
+		this.sleepinessDataStorage.set(sleepData.id, sleepData);
 	}
+	
+
+	//This helper function serves to reset all storages.
+	public resetData()
+	{
+		//this.sleepDataStorage.clear();
+		this.overnightDataStorage.clear();
+		this.sleepinessDataStorage.clear();
+	}
+
+	public loadOvernightDataStorage()
+	{
+		console.log("Calling loadOvernightDataStorage()");
+		/*SleepService.AllOvernightData.forEach( (val, index) => {
+			console.log("Loading Overnight Data Storage...");
+			this.overnightDataStorage.get(index.toString()).then( (data) => {
+				console.log(val);
+			})
+		})*/
+
+		this.overnightDataStorage.forEach( (val) => {
+			console.log(val);
+		})
+	}
+
+	public loadSleepinessDataStorage()
+	{
+		console.log("Calling loadSleepinessDataStorage()");
+		/*SleepService.AllSleepinessData.forEach( (val, index) => {
+			console.log("Loading Sleepiness Data Storage...");
+			this.sleepinessDataStorage.get(index.toString()).then( (data) => {
+				console.log(val);
+			})
+		})*/
+
+		this.sleepinessDataStorage.forEach( (val) => {
+			console.log(val);
+		})
+	}
+
+
 }

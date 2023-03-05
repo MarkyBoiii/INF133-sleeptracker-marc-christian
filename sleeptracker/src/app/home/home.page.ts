@@ -17,7 +17,7 @@ export class HomePage {
 	}
 
 	ngOnInit() {
-		console.log(this.allSleepData);
+		//console.log(this.allSleepData);
 	}
 
 	/* Ionic doesn't allow bindings to static variables, so this getter can be used instead. */
@@ -27,5 +27,16 @@ export class HomePage {
 
 	async show() {
 		console.log(this.allSleepData); // show the data
+
+		//Show storages
+		this.sleepService.loadOvernightDataStorage();
+		this.sleepService.loadSleepinessDataStorage();
+	}
+
+	//Resets the storage
+	public resetStorage()
+	{
+		console.log("Resetting the storage...");
+		return this.sleepService.resetData();
 	}
 }
