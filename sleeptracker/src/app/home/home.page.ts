@@ -3,6 +3,7 @@ import { SleepService } from '../services/sleep.service';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomePage {
 	public sleepy:any;
 	public wakey:any;
 
-	constructor(public sleepService:SleepService) {
+	constructor(public sleepService:SleepService, private actionSheetCtrl: ActionSheetController) {
 	}
 
 	ngOnInit() {
@@ -42,6 +43,36 @@ export class HomePage {
 		this.sleepService.logOvernightData(sleepData); // create sleep data and log to sleepService
 	}
 	
+	async presentActionSheet() {
+		const actionSheet = await this.actionSheetCtrl.create({
+		  header: 'Example header',
+		  subHeader: 'Example subheader',
+		  buttons: [
+			{
+			  text: 'Delete',
+			  role: 'destructive',
+			  data: {
+				action: 'delete',
+			  },
+			},
+			{
+			  text: 'Share',
+			  data: {
+				action: 'share',
+			  },
+			},
+			{
+			  text: 'Cancel',
+			  role: 'cancel',
+			  data: {
+				action: 'cancel',
+			  },
+			},
+		  ],
+		});
+	
+		await actionSheet.present();
+	  }
 
 
 }
