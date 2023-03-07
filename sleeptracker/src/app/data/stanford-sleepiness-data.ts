@@ -19,6 +19,7 @@ export class StanfordSleepinessData extends SleepData {
 		super();
 		this.loggedValue = loggedValue;
 		this.loggedAt = loggedAt;
+		this.isOvernightSleepData = false;
 	}
 
 	override summaryString():string {

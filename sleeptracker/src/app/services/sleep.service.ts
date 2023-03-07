@@ -14,17 +14,16 @@ export class SleepService {
 	public static AllSleepinessData:StanfordSleepinessData[] = [];
 
 	//Injected storage from @ionic/storage-angular
-	constructor(private overnightDataStorage:Storage, private sleepinessDataStorage:Storage) {
+	constructor(private sleepDataStorage:Storage) {
 		//Create the three different storages/databases.
-		//this.sleepDataStorage.create();
-		this.overnightDataStorage.create();
-		this.sleepinessDataStorage.create();
+		this.sleepDataStorage.create();
+		//this.overnightDataStorage.create();
+		//this.sleepinessDataStorage.create();
 
 		if(SleepService.LoadDefaultData) {
 			this.addDefaultData();
 		SleepService.LoadDefaultData = false;
 
-		
 
 		//Everytime the service is started, load both storages.
 		//this.loadOvernightDataStorage();
@@ -62,8 +61,8 @@ export class SleepService {
 		}
 
 		//Adds the sleepData to the local storage of overnightDataStorage. Keys: the length of AllOvernightData (as we add to it, we get a different key)
-		console.log("###", this.overnightDataStorage);
-		this.overnightDataStorage.set(sleepData.id, sleepData);
+		console.log("###", this.sleepDataStorage);
+		this.sleepDataStorage.set(sleepData.id, sleepData);
 	}
 
 	public logSleepinessData(sleepData:StanfordSleepinessData) {
@@ -81,16 +80,16 @@ export class SleepService {
 		}
 
 		//Adds the sleepData to the local storage of sleepinessDataStorage. Keys: the length of AllSleepinessData (as we add to it, we get a different key)
-		this.sleepinessDataStorage.set(sleepData.id, sleepData);
+		this.sleepDataStorage.set(sleepData.id, sleepData);
 	}
 	
 
 	//This helper function serves to reset all storages.
 	public resetData()
 	{
-		//this.sleepDataStorage.clear();
-		this.overnightDataStorage.clear();
-		this.sleepinessDataStorage.clear();
+		this.sleepDataStorage.clear();
+		//this.overnightDataStorage.clear();
+		//this.sleepinessDataStorage.clear();
 	}
 
 	public loadOvernightDataStorage()
@@ -104,8 +103,13 @@ export class SleepService {
 			})
 		})*/
 
-		this.overnightDataStorage.forEach( (val) => {
-			console.log(val, "PRINTED FROM OVERNIGHT DATA");
+		this.sleepDataStorage.forEach( (val) => {
+			if (val.isOvernightSleepData)
+			{
+				console.log(val, "PRINTING FROM OVERNIGHT DATA");
+				//console.log(val);
+			}
+			//console.log(val, "PRINTED FROM OVERNIGHT DATA");
 		});
 	}
 
@@ -119,8 +123,12 @@ export class SleepService {
 			})
 		})*/
 
-		this.sleepinessDataStorage.forEach( (val) => {
-			console.log(val, "PRINTED FROM SLEEPINESS DATA");
+		this.sleepDataStorage.forEach( (val) => {
+			//console.log(val, "PRINTED FROM SLEEPINESS DATA");
+			if (!val.isOvernightSleepData)
+			{
+				console.log(val, "PRINTING FROM SLEEPINESS DATA")
+			}
 		});
 	}
 
