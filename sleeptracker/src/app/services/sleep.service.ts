@@ -39,14 +39,30 @@ export class SleepService {
 		this.logOvernightData(new OvernightSleepData(new Date('February 20, 2021 23:11:00'), new Date('February 21, 2021 08:03:00')));
 	}
 
+	private inArray(obj:any, array:any) {
+		for (let i in array) {
+			if (array[i] === obj) {
+				return true;
+			}
+		};
+		return false;
+	}
+
+
 	public logOvernightData(sleepData:OvernightSleepData) {
 
 		//this.overnightDataStorage.set(SleepService.AllOvernightData.length.toString(), sleepData);
 
-		SleepService.AllSleepData.push(sleepData);
-		SleepService.AllOvernightData.push(sleepData);
+		if (!this.inArray(sleepData, SleepService.AllSleepData)) {
+			SleepService.AllSleepData.push(sleepData);
+		}
+
+		if (!this.inArray(sleepData, SleepService.AllOvernightData)) {
+			SleepService.AllOvernightData.push(sleepData);
+		}
 
 		//Adds the sleepData to the local storage of overnightDataStorage. Keys: the length of AllOvernightData (as we add to it, we get a different key)
+		console.log("###", this.overnightDataStorage);
 		this.overnightDataStorage.set(sleepData.id, sleepData);
 	}
 
@@ -54,8 +70,15 @@ export class SleepService {
 		
 		//this.sleepinessDataStorage.set(SleepService.AllSleepinessData.length.toString(), sleepData);
 		
-		SleepService.AllSleepData.push(sleepData);
-		SleepService.AllSleepinessData.push(sleepData);
+		//SleepService.AllSleepData.push(sleepData);
+		//SleepService.AllSleepinessData.push(sleepData);
+		if (!this.inArray(sleepData, SleepService.AllSleepData)) {
+			SleepService.AllSleepData.push(sleepData);
+		}
+
+		if (!this.inArray(sleepData, SleepService.AllOvernightData)) {
+			SleepService.AllSleepinessData.push(sleepData);
+		}
 
 		//Adds the sleepData to the local storage of sleepinessDataStorage. Keys: the length of AllSleepinessData (as we add to it, we get a different key)
 		this.sleepinessDataStorage.set(sleepData.id, sleepData);
@@ -73,6 +96,7 @@ export class SleepService {
 	public loadOvernightDataStorage()
 	{
 		console.log("Calling loadOvernightDataStorage()");
+		//console.log("testin");
 		/*SleepService.AllOvernightData.forEach( (val, index) => {
 			console.log("Loading Overnight Data Storage...");
 			this.overnightDataStorage.get(index.toString()).then( (data) => {
@@ -81,8 +105,8 @@ export class SleepService {
 		})*/
 
 		this.overnightDataStorage.forEach( (val) => {
-			console.log(val);
-		})
+			console.log(val, "PRINTED FROM OVERNIGHT DATA");
+		});
 	}
 
 	public loadSleepinessDataStorage()
@@ -96,8 +120,8 @@ export class SleepService {
 		})*/
 
 		this.sleepinessDataStorage.forEach( (val) => {
-			console.log(val);
-		})
+			console.log(val, "PRINTED FROM SLEEPINESS DATA");
+		});
 	}
 
 
