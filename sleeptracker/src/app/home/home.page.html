@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Sleep Tracker 
+      Sleep Tracker
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,10 +12,12 @@
       <ion-title size="large">Sleep Tracker</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  
+<div class="home-buttons">
   <ion-button (click)="show()">Show Sleep Data</ion-button>
 
   <ion-button (click)="resetStorage()">Reset Data</ion-button>
+</div>
 
   <ion-fab slot="fixed" horizontal="start" vertical="bottom">
     <ion-fab-button>
