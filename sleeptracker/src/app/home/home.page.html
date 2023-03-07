@@ -21,10 +21,16 @@
 
 <div id="overnight-sleeping-times">
   <h2 class="data-title">OVERNIGHT SLEEPING TIMES</h2>
+  <ul *ngFor="let x of dataStorage">
+    <li *ngIf="x.isOvernightSleepData">{{x.loggedAt}} - slept from {{x.sleepStart}} to {{x.sleepEnd}}</li>
+  </ul>
 </div>
 
 <div id="sleepiness-entries">
   <h2 class="data-title">SLEEPINESS ENTRIES</h2>
+  <ul *ngFor="let x of dataStorage">
+    <li *ngIf="!x.isOvernightSleepData">{{x.loggedAt}} - {{x.loggedValue}}</li>
+  </ul>
 </div>
 
   <ion-fab slot="fixed" horizontal="start" vertical="bottom">

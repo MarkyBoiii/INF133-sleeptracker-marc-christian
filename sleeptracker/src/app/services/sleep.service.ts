@@ -132,5 +132,13 @@ export class SleepService {
 		});
 	}
 
+	public getSleepStorage():any[] {
+		let x: any[] = [];
+		this.sleepDataStorage.forEach((val) => {
+			x.push(val);
+		});
+		return x;
+	}
+
 
 }

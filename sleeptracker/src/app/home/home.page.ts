@@ -13,7 +13,7 @@ import { RouterModule, Routes, Router} from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-	public dataStorage:any;
+	public dataStorage:any[] = [];
 
 	constructor(public sleepService:SleepService) {
 	}
@@ -28,6 +28,8 @@ export class HomePage {
 
 	async show() {
 		console.log(this.allSleepData); // show the data
+
+		this.dataStorage = this.sleepService.getSleepStorage();
 
 		//Show storages
 		this.sleepService.loadOvernightDataStorage();
