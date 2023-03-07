@@ -14,6 +14,8 @@ import { RouterModule, Routes, Router} from '@angular/router';
 })
 export class HomePage {
 	public dataStorage:any[] = [];
+	public currentDate:String = new Date().toDateString();
+	public showDate:boolean = true;
 
 	constructor(public sleepService:SleepService) {
 	}
@@ -29,6 +31,8 @@ export class HomePage {
 	async show() {
 		console.log(this.allSleepData); // show the data
 
+		this.showDate = false; // turns off date, shows data instead
+
 		this.dataStorage = this.sleepService.getSleepStorage();
 
 		//Show storages
@@ -39,6 +43,7 @@ export class HomePage {
 	//Resets the storage
 	public resetStorage()
 	{
+		this.showDate = true; // shows the date again
 		console.log("Resetting the storage...");
 		return this.sleepService.resetData();
 	}

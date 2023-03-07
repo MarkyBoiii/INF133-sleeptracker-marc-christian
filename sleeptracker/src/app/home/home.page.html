@@ -19,14 +19,18 @@
   <ion-button (click)="resetStorage()">Reset Data</ion-button>
 </div>
 
-<div id="overnight-sleeping-times">
+<div *ngIf="showDate">
+  <h3>The current date is {{currentDate}}</h3>
+</div>
+
+<div *ngIf="!showDate" id="overnight-sleeping-times">
   <h2 class="data-title">OVERNIGHT SLEEPING TIMES</h2>
   <ul *ngFor="let x of dataStorage">
     <li *ngIf="x.isOvernightSleepData">{{x.loggedAt}} - slept from {{x.sleepStart}} to {{x.sleepEnd}}</li>
   </ul>
 </div>
 
-<div id="sleepiness-entries">
+<div *ngIf="!showDate" class="data-entries" id="sleepiness-entries">
   <h2 class="data-title">SLEEPINESS ENTRIES</h2>
   <ul *ngFor="let x of dataStorage">
     <li *ngIf="!x.isOvernightSleepData">{{x.loggedAt}} - {{x.loggedValue}}</li>

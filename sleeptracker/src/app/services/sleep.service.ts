@@ -132,7 +132,7 @@ export class SleepService {
 		});
 	}
 
-	public getSleepStorage():any[] {
+	public getSleepStorage():any[] { // gives data to home.page.ts
 		let x: any[] = [];
 		this.sleepDataStorage.forEach((val) => {
 			x.push(val);
