@@ -48,6 +48,7 @@ export class SleepService {
 	}
 
 
+
 	public logOvernightData(sleepData:OvernightSleepData) {
 
 		//this.overnightDataStorage.set(SleepService.AllOvernightData.length.toString(), sleepData);
@@ -61,7 +62,6 @@ export class SleepService {
 		}
 
 		//Adds the sleepData to the local storage of overnightDataStorage. Keys: the length of AllOvernightData (as we add to it, we get a different key)
-		console.log("###", this.sleepDataStorage);
 		this.sleepDataStorage.set(sleepData.id, sleepData);
 	}
 

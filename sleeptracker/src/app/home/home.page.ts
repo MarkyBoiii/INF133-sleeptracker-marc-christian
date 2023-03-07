@@ -13,11 +13,12 @@ import { RouterModule, Routes, Router} from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+	public dataStorage:any;
+
 	constructor(public sleepService:SleepService) {
 	}
 
 	ngOnInit() {
-		//console.log(this.allSleepData);
 	}
 
 	/* Ionic doesn't allow bindings to static variables, so this getter can be used instead. */
