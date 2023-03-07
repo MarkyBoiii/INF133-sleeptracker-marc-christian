@@ -40,6 +40,10 @@ export class HomePage {
 		this.sleepService.loadSleepinessDataStorage();
 	}
 
+	public hide() {
+		this.showDate = true; 
+	}
+
 	//Resets the storage
 	public resetStorage()
 	{

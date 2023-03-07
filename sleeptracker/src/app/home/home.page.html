@@ -14,7 +14,8 @@
   </ion-header>
 
 <div class="home-buttons">
-  <ion-button (click)="show()">Show Sleep Data</ion-button>
+  <ion-button *ngIf="showDate" (click)="show()">Show Sleep Data</ion-button>
+  <ion-button *ngIf="!showDate" (click)="hide()">Hide Sleep Data</ion-button>
 
   <ion-button (click)="resetStorage()">Reset Data</ion-button>
 </div>
