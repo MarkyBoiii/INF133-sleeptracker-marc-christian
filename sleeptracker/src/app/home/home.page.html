@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="bkgrd-img" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Sleep Tracker</ion-title>
@@ -20,7 +20,7 @@
   <ion-button (click)="resetStorage()">Reset Data</ion-button>
 </div>
 
-<div *ngIf="showDate">
+<div id="date-display" *ngIf="showDate">
   <h3>The current date is {{currentDate}}</h3>
 </div>
 
