@@ -14,10 +14,10 @@
   </ion-header>
 
 <div class="home-buttons">
-  <ion-button *ngIf="showDate" (click)="show()">Show Sleep Data</ion-button>
-  <ion-button *ngIf="!showDate" (click)="hide()">Hide Sleep Data</ion-button>
+  <ion-button *ngIf="showDate" (click)="show()"><ion-icon slot="start" name="eye"></ion-icon>Show Sleep Data</ion-button>
+  <ion-button *ngIf="!showDate" (click)="hide()"><ion-icon slot="start" name="eye-off"></ion-icon>Hide Sleep Data</ion-button>
 
-  <ion-button (click)="resetStorage()">Reset Data</ion-button>
+  <ion-button (click)="resetStorage()"><ion-icon slot="start" name="trash"></ion-icon>Reset Data</ion-button>
 </div>
 
 <div id="date-display" *ngIf="showDate">

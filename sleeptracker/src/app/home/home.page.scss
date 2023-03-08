@@ -37,7 +37,7 @@
 }
 
 .bkgrd-img {
-  --background: url('/assets/cloud-wallpaper.jpg');
+  --background: url('/assets/cloud-wallpaper.jpg') no-repeat center/cover fixed;
 }
 
 #date-display {
