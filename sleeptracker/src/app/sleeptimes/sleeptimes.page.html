@@ -15,6 +15,6 @@
   <ion-datetime class="datetime-wheel" [(ngModel)]="wakey" [preferWheel]="true" (ionChange)="wakeDate(wakey)">
     <span slot="title">What time did you wake up?</span>
   </ion-datetime>
-  <ion-button (click)="done()" routerLink="/home" >Done</ion-button>
+  <ion-button id="done-button" (click)="done()" routerLink="/home" >Done</ion-button>
 
 </ion-content>

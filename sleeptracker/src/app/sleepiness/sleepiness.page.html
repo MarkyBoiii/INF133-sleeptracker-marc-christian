@@ -8,15 +8,19 @@
 </ion-header>
 
 <ion-content class="bkgrd-img">
-<h1>How sleepy are you feeling?</h1>
-<ion-chip (click)="s1()">1</ion-chip>
-<ion-chip (click)="s2()">2</ion-chip>
-<ion-chip (click)="s3()">3</ion-chip>
-<ion-chip (click)="s4()">4</ion-chip>
-<ion-chip (click)="s5()">5</ion-chip>
-<ion-chip (click)="s6()">6</ion-chip>
-<ion-chip (click)="s7()">7</ion-chip>
+<h1 id="prompt">How sleepy are you feeling?</h1>
+<div id="num-buttons">
+  <ion-chip (click)="s1()">1</ion-chip>
+  <ion-chip (click)="s2()">2</ion-chip>
+  <ion-chip (click)="s3()">3</ion-chip>
+  <ion-chip (click)="s4()">4</ion-chip>
+  <ion-chip (click)="s5()">5</ion-chip>
+  <ion-chip (click)="s6()">6</ion-chip>
+  <ion-chip (click)="s7()">7</ion-chip>
+  
+  <br>
 
-<ion-button (click)="done()" routerLink="/home">Done</ion-button>
+  <ion-button id="done" (click)="done()" routerLink="/home">Done</ion-button>
+</div>
 
 </ion-content>
