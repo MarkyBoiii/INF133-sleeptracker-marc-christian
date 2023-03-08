@@ -68,4 +68,7 @@ N/A
 Capacitor Storage, with built-in support from Ionic.
 
 14. How does your app implement or follow principles of good mobile design?
-
+We have "uh oh" buttons on every page where an action is taken — you can simply go back. Because of our design choices
+(back buttons, hide buttons, other toggles) it is impossible to break the app. We also use simple and few colors (all buttons are
+blue). Also, all buttons are borderless. The appropriate widgets are also used — we used datetime wheels to select date/time, and
+a specified set of buttons to rate sleepiness on the stanford sleepiness scale.
